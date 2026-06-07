@@ -14,7 +14,7 @@ public class HistoricoRisco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_historico")
-    @SequenceGenerator(name = "sq_historico", sequenceName = "SQ_T_SEN_HISTORICO_RISCO", allocationSize = 1)
+    @SequenceGenerator(name = "sq_historico", sequenceName = "seq_historico_risco", allocationSize = 1)
     @Column(name = "id_historico")
     private Long id;
 

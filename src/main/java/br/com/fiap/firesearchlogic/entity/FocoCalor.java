@@ -14,7 +14,7 @@ public class FocoCalor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_foco")
-    @SequenceGenerator(name = "sq_foco", sequenceName = "SQ_T_SEN_FOCO_CALOR", allocationSize = 1)
+    @SequenceGenerator(name = "sq_foco", sequenceName = "seq_foco_calor", allocationSize = 1)
     @Column(name = "id_foco")
     private Long id;
 

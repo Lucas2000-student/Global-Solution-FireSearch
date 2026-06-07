@@ -13,7 +13,7 @@ public class Regiao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_regiao")
-    @SequenceGenerator(name = "sq_regiao", sequenceName = "SQ_T_SEN_REGIAO", allocationSize = 1)
+    @SequenceGenerator(name = "sq_regiao", sequenceName = "seq_regiao", allocationSize = 1)
     @Column(name = "id_regiao")
     private Long id;
 

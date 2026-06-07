@@ -14,7 +14,7 @@ public class Alerta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_alerta")
-    @SequenceGenerator(name = "sq_alerta", sequenceName = "SQ_T_SEN_ALERTA", allocationSize = 1)
+    @SequenceGenerator(name = "sq_alerta", sequenceName = "seq_alerta", allocationSize = 1)
     @Column(name = "id_alerta")
     private Long id;
 

@@ -13,7 +13,7 @@ public class Satelite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_satelite")
-    @SequenceGenerator(name = "sq_satelite", sequenceName = "SQ_T_SEN_SATELITE", allocationSize = 1)
+    @SequenceGenerator(name = "sq_satelite", sequenceName = "seq_satelite", allocationSize = 1)
     @Column(name = "id_satelite")
     private Long id;
 

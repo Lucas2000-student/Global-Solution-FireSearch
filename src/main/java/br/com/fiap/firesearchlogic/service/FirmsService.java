@@ -62,7 +62,8 @@ public class FirmsService {
 
             List<Regiao> regioes = regiaoRepository.findAll();
             Satelite satelite = sateliteRepository.findByDsFonte(fonte)
-                    .orElse(null);
+                    .orElse(sateliteRepository.findAll()
+                            .stream().findFirst().orElse(null));
 
             String[] linhas = csv.split("\n");
             int importados = 0;
