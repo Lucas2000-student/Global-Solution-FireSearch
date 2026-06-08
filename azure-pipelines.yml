@@ -1,0 +1,92 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  JAVA_VERSION: '21'
+  MAVEN_OPTS: '-Xmx3072m'
+
+stages:
+
+  # ─────────────────────────────────────
+  # STAGE 1 — BUILD E TESTES
+  # ─────────────────────────────────────
+  - stage: Build
+    displayName: 'Build e Testes'
+    jobs:
+      - job: BuildJob
+        displayName: 'Compilar e Testar'
+        steps:
+
+          - task: JavaToolInstaller@0
+            displayName: 'Configurar Java 21'
+            inputs:
+              versionSpec: '21'
+              jdkArchitectureOption: 'x64'
+              jdkSourceOption: 'PreInstalled'
+
+          - task: Maven@3
+            displayName: 'Maven Clean Install'
+            inputs:
+              mavenPomFile: 'pom.xml'
+              mavenOptions: $(MAVEN_OPTS)
+              javaHomeOption: 'JDKVersion'
+              jdkVersionOption: $(JAVA_VERSION)
+              jdkArchitectureOption: 'x64'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              goals: 'clean install'
+            env:
+              DB_URL: $(DB_URL)
+              DB_USER: $(DB_USER)
+              DB_PASS: $(DB_PASS)
+              JWT_SECRET: $(JWT_SECRET)
+              JWT_ISSUER: $(JWT_ISSUER)
+              RABBITMQ_HOST: $(RABBITMQ_HOST)
+              RABBITMQ_USERNAME: $(RABBITMQ_USERNAME)
+              RABBITMQ_PASSWORD: $(RABBITMQ_PASSWORD)
+              MAP_KEY: $(MAP_KEY)
+
+          - task: CopyFiles@2
+            displayName: 'Copiar JAR para staging'
+            inputs:
+              SourceFolder: '$(System.DefaultWorkingDirectory)/target'
+              Contents: '*.jar'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publicar artefato'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'firesearchlogic-jar'
+
+  # ─────────────────────────────────────
+  # STAGE 2 — DEPLOY
+  # ─────────────────────────────────────
+  - stage: Deploy
+    displayName: 'Deploy Azure App Service'
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - job: DeployJob
+        displayName: 'Deploy para Azure'
+        steps:
+
+          - task: DownloadBuildArtifacts@1
+            displayName: 'Baixar artefato'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'firesearchlogic-jar'
+              downloadPath: '$(System.ArtifactsDirectory)'
+
+          - task: AzureWebApp@1
+            displayName: 'Deploy no Azure App Service'
+            inputs:
+              azureSubscription: '$(AZURE_SUBSCRIPTION)'
+              appType: 'webAppLinux'
+              appName: 'firesearchlogic'
+              package: '$(System.ArtifactsDirectory)/firesearchlogic-jar/*.jar'
+              runtimeStack: 'JAVA|21-java21'

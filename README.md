@@ -199,6 +199,12 @@ firesearch.ia.url=https://firesearchia.onrender.com
 # NASA FIRMS
 firms.api.key=SUA_API_KEY
 ```
+---
+## Scripts de Banco e Infraestrutura
+
+Os scripts de criação do banco Oracle e provisionamento da infraestrutura Azure estão documentados em:
+
+📁 [scripts/README.md](scripts/README.md)
 
 ---
 
