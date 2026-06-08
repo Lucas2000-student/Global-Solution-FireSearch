@@ -85,7 +85,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy no Azure App Service'
             inputs:
-              azureSubscription: '$(AZURE_SUBSCRIPTION)'
+              azureSubscription: 'azure-sentinela'
               appType: 'webAppLinux'
               appName: 'app-sentinela-api-RM560475'
               package: '$(System.ArtifactsDirectory)/firesearchlogic-jar/*.jar'
