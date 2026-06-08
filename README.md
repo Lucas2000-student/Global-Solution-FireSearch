@@ -13,7 +13,7 @@ Projeto desenvolvido para a **Global Solution 2026/1** da FIAP no curso de Anál
 
 ---
 
-# 📋 Sobre o Projeto
+## 📋 Sobre o Projeto
 
 O FireSearch é uma solução voltada para prevenção e monitoramento de incêndios florestais.
 
@@ -30,18 +30,18 @@ O objetivo é identificar regiões com potencial risco de incêndio e gerar aler
 
 ---
 
-# 👥 Equipe
+## 👥 Equipe
 
-| RM       | Nome                  | Responsabilidade                |
-| -------- | --------------------- | ------------------------------- |
-| RM553043 | Daniel Kendi          | API .NET, Oracle DDL e Firebase |
-| RM560179 | Lucas da Ressurreição | API Java e Machine Learning     |
-| RM560560 | Jonas Kimio           | Mobile React Native             |
-| RM560475 | Marcos Vinicius       | DevOps e CI/CD                  |
+| RM       | Nome                  | Responsabilidade                  |
+| -------- | --------------------- |-----------------------------------|
+| RM553043 | Daniel Kendi          | API .NET, Oracle DDL e Firebase   |
+| RM560179 | Lucas da Ressurreição | API Java e Machine Learning       |
+| RM560560 | Jonas Kimio           | Mobile React Native               |
+| RM560475 | Marcos Vinicius       | DevOps e CI/CD, Quality Assurance |
 
 ---
 
-# 🏗️ Arquitetura
+## 🏗️ Arquitetura
 
 ```mermaid
 flowchart LR
@@ -66,9 +66,9 @@ IA --> Oracle[(Oracle Database)]
 
 ---
 
-# 🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
-## Backend
+### Backend
 
 * Java 21
 * Spring Boot 3.5
@@ -77,14 +77,14 @@ IA --> Oracle[(Oracle Database)]
 * Spring AMQP
 * Maven
 
-## Infraestrutura
+### Infraestrutura
 
 * Oracle Database
 * RabbitMQ (CloudAMQP)
 * Firebase Authentication
 * Swagger / OpenAPI
 
-## Inteligência Artificial
+### Inteligência Artificial
 
 * Python
 * Flask
@@ -92,40 +92,40 @@ IA --> Oracle[(Oracle Database)]
 
 ---
 
-# ⚙️ Funcionalidades
+## ⚙️ Funcionalidades
 
-## Monitoramento de Regiões
+### Monitoramento de Regiões
 
 * Cadastro de regiões monitoradas
 * Consulta de regiões cadastradas
 * Remoção de regiões
 
-## Integração NASA FIRMS
+### Integração NASA FIRMS
 
 * Importação automática de focos de calor
 * Consulta diária agendada
 * Armazenamento histórico
 
-## Processamento de Risco
+### Processamento de Risco
 
 * Integração com modelo de Machine Learning
 * Classificação automática de risco
 * Histórico de análises
 
-## IoT
+### IoT
 
 * Recebimento de leituras de sensores
 * Processamento assíncrono
 * Geração de alertas
 
-## Segurança
+### Segurança
 
 * Validação JWT Firebase
 * Controle de acesso via Spring Security
 
 ---
 
-# 🔗 Endpoints Principais
+## 🔗 Endpoints Principais
 
 | Método | Endpoint                          | Descrição                 |
 | ------ | --------------------------------- | ------------------------- |
@@ -141,7 +141,7 @@ IA --> Oracle[(Oracle Database)]
 
 ---
 
-# 🔥 Fluxo NASA FIRMS
+## 🔥 Fluxo NASA FIRMS
 
 1. O `FirmsService` executa diariamente às **06h00**.
 2. A aplicação consulta a API NASA FIRMS.
@@ -153,7 +153,7 @@ IA --> Oracle[(Oracle Database)]
 
 ---
 
-# 📡 Fluxo IoT
+## 📡 Fluxo IoT
 
 1. O sensor envia dados para:
 
@@ -168,7 +168,7 @@ POST /api/iot/sensor
 
 ---
 
-# 🛠️ Configuração
+## 🛠️ Configuração
 
 Crie o arquivo:
 
@@ -202,7 +202,7 @@ firms.api.key=SUA_API_KEY
 
 ---
 
-# ▶️ Executando o Projeto
+## ▶️ Executando o Projeto
 
 ```bash
 git clone https://github.com/seu-repositorio/firesearchlogic.git
@@ -216,7 +216,7 @@ mvn spring-boot:run
 
 ---
 
-# 📖 Documentação da API
+## 📖 Documentação da API
 
 Após iniciar a aplicação:
 
@@ -226,7 +226,7 @@ http://localhost:8080/swagger-ui/index.html
 
 ---
 
-# 🎯 Diferenciais do Projeto
+## 🎯 Diferenciais do Projeto
 
 * Dados reais da NASA FIRMS
 * Arquitetura orientada a eventos
