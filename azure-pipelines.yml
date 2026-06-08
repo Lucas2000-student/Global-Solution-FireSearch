@@ -82,12 +82,12 @@ stages:
               artifactName: 'firesearchlogic-jar'
               downloadPath: '$(System.ArtifactsDirectory)'
 
-          - - task: AzureWebApp@1
-          - displayName: 'Deploy no Azure App Service'
-          - inputs:
-          - azureSubscription: 'azure-sentinela'
-          - appType: 'webAppLinux'
-          - appName: 'app-sentinela-api-RM560475'
-          - resourceGroupName: 'rg-sentinela-RM560475'
-          - package: '$(System.ArtifactsDirectory)/firesearchlogic-jar/*.jar'
-          - runtimeStack: 'JAVA|21-java21'
+          - task: AzureWebApp@1
+            displayName: 'Deploy no Azure App Service'
+            inputs:
+              azureSubscription: 'azure-sentinela'
+              appType: 'webAppLinux'
+              appName: 'app-sentinela-api-RM560475'
+              resourceGroupName: 'rg-sentinela-RM560475'
+              package: '$(System.ArtifactsDirectory)/firesearchlogic-jar/*.jar'
+              runtimeStack: 'JAVA|21-java21'
