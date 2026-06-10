@@ -82,6 +82,17 @@ stages:
               artifactName: 'firesearchlogic-jar'
               downloadPath: '$(System.ArtifactsDirectory)'
 
+          - task: AzureCLI@2
+            displayName: 'Limpar JARs antigos do wwwroot'
+            inputs:
+              azureSubscription: 'azure-sentinela'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az webapp ssh --resource-group rg-sentinela-RM560475 \
+                  --name app-sentinela-api-RM560475 \
+                  --command "rm -f /home/site/wwwroot/*.jar" || true
+
           - task: AzureWebApp@1
             displayName: 'Deploy no Azure App Service'
             inputs:
@@ -89,5 +100,6 @@ stages:
               appType: 'webAppLinux'
               appName: 'app-sentinela-api-RM560475'
               resourceGroupName: 'rg-sentinela-RM560475'
-              package: '$(System.ArtifactsDirectory)/firesearchlogic-jar/*.jar'
+              package: '$(System.ArtifactsDirectory)/firesearchlogic-jar/firesearchlogic-0.0.1-SNAPSHOT.jar'
               runtimeStack: 'JAVA|21-java21'
+              deploymentMethod: 'zipDeploy'
