@@ -255,4 +255,12 @@ http://localhost:8080/swagger-ui/index.html
 
 ---
 
+## Links dos Repositórios de outras matérias:
+
+* IOT: [Repository](https://github.com/Lucas2000-student/firesearchIA)
+* .NET: [Repository](https://github.com/DanKendi/SentinelLoginApi)
+* Front: [Repository](https://github.com/JonasKimio/SENTINELA)
+
+---
+
 **FIAP — Análise e Desenvolvimento de Sistemas — Global Solution 2026/1**
